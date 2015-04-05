@@ -30,7 +30,8 @@ var html = document.querySelector("svg").parentNode.innerHTML;
 —уть которого проста, € преобразовывал svg в dataUri, загружал его через image, рисовал картинку на canvas и превращал в png.  азалось цель достигнута, и можно расслабитс€. Ётот подход сработал в Firefox и chrome, но открыв ~~во всеми нами любимом браузере~~ IE, € получил замечательную ошибку:
 ![secureError](http://habrastorage.org/files/1c6/74c/de8/1c674cde8f51425a82a653e55e86bc9e.png) 
 ƒело в том что IE считает, что картинка загружена с другого хоста.    сожалению установить origin дл€ dataUri не получитс€. —обственно описание правил https://html.spec.whatwg.org/multipage/scripting.html#security-with-canvas-elements. ћожно было конечно проксировать svg через сервер, и тогда все бы сработало, но хотелось чисто клинское решение.
-» тут € вспомнил про замечательную библиотеку [canvg](https://github.com/gabelerner/canvg). — помощью этой библиотеки € рисую svg на canvas, а далее поступаю к в первом случае беру `toDataURL("image/png")`. ѕолучилс€ такой не замысловатый код [github](http://mavrin.github.io/svgToPng/useCanvg.html):
+
+» тут € вспомнил про замечательную библиотеку [canvg](https://github.com/gabelerner/canvg). — помощью этой библиотеки € рисую svg на canvas, а далее поступаю как в первом варианте: беру `toDataURL("image/png")`. ѕолучилс€ такой не замысловатый код [github](http://mavrin.github.io/svgToPng/useCanvg.html):
 ```javascript
  var svg = document.querySelector('svg');
         var canvas = document.createElement('canvas');
@@ -50,7 +51,8 @@ var html = document.querySelector("svg").parentNode.innerHTML;
 ```
 “ут стоит сказать, что € еще использовал библиотеку [FileSaver](https://github.com/ChenWenBrian/FileSaver.js) дл€ вызова диалогового окна сохранени€.
 ¬от и все, мы добились желаемого результата.
-—тоит отменить один нюанс, € задалс€ вопросом сохранени€ svg в png, когда писал плагин дл€ экспорта [tauCharts](http://www.taucharts.com/). “ак как стили в svg задаютс€ из внешнего файла, что бы добитьс€ максимально подоби€ с исходным svg, € вставл€ю inline style в svg. B получаем вот такой 
+
+—тоит отменить один нюанс, € задалс€ вопросом сохранени€ svg в png, когда писал плагин дл€ экспорта [tauCharts](http://www.taucharts.com/). “ак как стили в svg задаютс€ из внешнего файла, чтобы добитьс€ максимально подоби€ с исходным svg, € вставл€ю inline style в svg. » получаем вот такой 
 [результат](http://mavrin.github.io/svgToPng/tauChartsExample.html)
 
 Ќадеюсь стать€ окажетс€ полезной дл€ вас и сохранит вам врем€.

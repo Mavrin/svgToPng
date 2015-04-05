@@ -27,7 +27,7 @@ var html = document.querySelector("svg").parentNode.innerHTML;
         canvas.parentNode.removeChild(canvas);
     };
 ```
-Суть которого проста, я преобразовывал svg в dataUri, загружал его через image, рисовал картинку на canvas и превращал в png. Казалось цель достигнута и можно расслабится. Этот подход сработал в Firefox и   Но открыв  ~~во всеми нами любом браузере~~ IE, я получил замечательную ошибку:
+Суть которого проста, я преобразовывал svg в dataUri, загружал его через image, рисовал картинку на canvas и превращал в png. Казалось цель достигнута, и можно расслабится. Этот подход сработал в Firefox и chrome, но открыв ~~во всеми нами любимом браузере~~ IE, я получил замечательную ошибку:
 ![secureError](http://habrastorage.org/files/1c6/74c/de8/1c674cde8f51425a82a653e55e86bc9e.png) 
 Дело в том что IE считает, что картинка загружена с другого хоста.  К сожалению установить origin для dataUri не получится. Собственно описание правил https://html.spec.whatwg.org/multipage/scripting.html#security-with-canvas-elements. Можно было конечно проксировать svg через сервер и тогда все бы сработало, но хотелось чисто клинское решение.
 И тут я вспомнил про замечательную библиотеку [canvg](https://github.com/gabelerner/canvg). С помощью этой библиотеки я рисую svg на canvas, а далее поступаю к в первом случае беру `toDataURL("image/png")`. Получился такой не замысловатый код [github](http://mavrin.github.io/svgToPng/useCanvg.html):

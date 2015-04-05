@@ -53,6 +53,6 @@ saveAs(blob, 'export_' + Date.now() + '.png');
 Вот и все, мы добились желаемого результата.
 
 Стоит отменить один нюанс, я задался вопросом сохранения svg в png, когда писал плагин для экспорта [tauCharts](http://www.taucharts.com/). Так как стили в svg задаются из внешнего файла, чтобы добиться максимально подобия с исходным svg, я вставляю inline style в svg. И получаем вот такой 
-[результат](http://mavrin.github.io/svgToPng/tauChartsExample.html)
+[результат](http://mavrin.github.io/svgToPng/tauChartsExample.html).
 
 Надеюсь статья окажется полезной для вас и сохранит вам время.

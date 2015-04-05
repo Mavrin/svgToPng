@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Svg to png from image. This method doesn't work in IE11</title>
+</head>
+<body>
+<div>
+    <svg xmlns="http://www.w3.org/2000/svg"
+         width="526" height="233">
+        <rect x="13" y="14" width="500" height="200" rx="50" ry="100"
+              fill="none" stroke="blue" stroke-width="10"/>
+    </svg>
+</div>
+<canvas></canvas>
+
+
+<script>
+    var html = document.querySelector("svg").parentNode.innerHTML;
+    var imgsrc = 'data:image/svg+xml;base64,' + btoa(html);
+    var canvas = document.querySelector("canvas"),
+            context = canvas.getContext("2d");
+    canvas.setAttribute('width', 526);
+    canvas.setAttribute('height', 233);
+
+    var image = new Image;
+    image.src = imgsrc;
+    image.onload = function () {
+        context.drawImage(image, 0, 0);
+        var canvasdata = canvas.toDataURL("image/png");
+        var a = document.createElement("a");
+        a.textContent = "save";
+        a.download = "export_" + Date.now() + ".png";
+        a.href = canvasdata;
+        document.body.appendChild(a);
+        canvas.parentNode.removeChild(canvas);
+    };
+</script>
+</body>
+</html>

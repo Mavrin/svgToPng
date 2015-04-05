@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div>
+    <svg xmlns="http://www.w3.org/2000/svg"
+         width="526" height="233">
+        <rect x="13" y="14" width="500" height="200" rx="50" ry="100"
+              fill="none" stroke="blue" stroke-width="10"/>
+    </svg>
+</div>
+<a href="#">save</a>
+<script src="bower_components/canvg/StackBlur.js"></script>
+<script src="bower_components/canvg/rgbcolor.js"></script>
+<script src="bower_components/canvg/canvg.js"></script>
+<script src="bower_components/FileSaver.js/FileSaver.js"></script>
+<script>
+    document.querySelector('a').addEventListener('click', function (e) {
+        e.preventDefault();
+        var svg = document.querySelector('svg');
+        var canvas = document.createElement('canvas');
+        canvas.height = svg.getAttribute('height');
+        canvas.width = svg.getAttribute('width');
+        canvg(canvas, svg.parentNode.innerHTML.trim());
+        var dataURL = canvas.toDataURL('image/png');
+        var data = atob(dataURL.substring('data:image/png;base64,'.length)),
+                asArray = new Uint8Array(data.length);
+
+        for (var i = 0, len = data.length; i < len; ++i) {
+            asArray[i] = data.charCodeAt(i);
+        }
+
+        var blob = new Blob([asArray.buffer], {type: 'image/png'});
+        saveAs(blob, 'export_' + Date.now() + '.png');
+    });
+</script>
+</body>
+</html>

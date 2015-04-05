@@ -1,0 +1,21 @@
+{
+  "name": "svgToPng",
+  "version": "0.0.0",
+  "homepage": "https://github.com/Mavrin/svgToPng",
+  "authors": [
+    "konstantin <krivlenia@targetprocess.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "taucharts": "~0.3.22",
+    "canvg": "https://github.com/Mavrin/canvg.git",
+    "FileSaver.js": "https://github.com/koffsyrup/FileSaver.js.git"
+  }
+}

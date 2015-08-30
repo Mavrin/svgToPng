@@ -14,7 +14,7 @@
     "tests"
   ],
   "dependencies": {
-    "taucharts": "~0.3.22",
+    "taucharts": "0.5.1",
     "canvg": "https://github.com/Mavrin/canvg.git",
     "FileSaver.js": "https://github.com/koffsyrup/FileSaver.js.git"
   }

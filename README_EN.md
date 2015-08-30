@@ -1,7 +1,7 @@
 
 https://mavrin.github.io/svgToPng
 
-# How we was making export plugin or convert svg to png.
+# How we were making export plugin or convert svg to png.
 
 Sometimes we need to convert svg to png with help browser api. Unfortunately, browser don't have that magic api, which do it without different hack. What to do, if we want to achieve desire result?  ![](http://habrastorage.org/storage2/d36/922/412/d36922412b65ad20413ac591db392e09.png)
 My first idea was make it with help canvas, which have method `toDataURL('image/png');`
